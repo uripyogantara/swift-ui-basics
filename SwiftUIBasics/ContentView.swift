@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isAlertVisible: Bool = false
+    @State var email: String = ""
     var body: some View {
         VStack {
             Text("Login Account")
@@ -16,7 +18,10 @@ struct ContentView: View {
                 .fontWeight(.thin)
                 .multilineTextAlignment(.leading)
                 .padding(.bottom)
-            TextField("Email", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+            TextField("Email", text: $email)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
                 .padding(.horizontal) .textFieldStyle(RoundedBorderTextFieldStyle())
             
             SecureField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
@@ -32,7 +37,7 @@ struct ContentView: View {
                 
             
             Button(action:{
-                
+                self.isAlertVisible = true
             }){
                 Text("Login")
             }
@@ -57,6 +62,9 @@ struct ContentView: View {
                     .foregroundColor(Color("DarkBlue"))
                 
             }.padding(.top,8)
+        }
+        .alert(isPresented: $isAlertVisible){
+            () -> Alert in return Alert(title: Text("Welcome!"), message: Text("Hello \(email)!"), dismissButton: .default(Text("back")))
         }
     }
 }
