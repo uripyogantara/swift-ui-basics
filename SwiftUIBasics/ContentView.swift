@@ -19,7 +19,7 @@ struct ContentView: View {
             TextField("Email", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                 .padding(.horizontal) .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            TextField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+            SecureField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                 .padding(.horizontal) .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Text("Forgot Password ?")
