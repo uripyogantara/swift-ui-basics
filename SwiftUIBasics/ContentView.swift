@@ -11,6 +11,20 @@ import SwiftUI
 struct ContentView: View {
     @State var isAlertVisible: Bool = false
     @State var email: String = ""
+    
+    struct ButtonGradientStyle : ViewModifier{
+        func body(content: Content) -> some View {
+            return content
+            .frame(minWidth:0, maxWidth: .infinity)
+            .padding(.vertical,12)
+            .background(LinearGradient(gradient: Gradient(colors: [Color("DarkBlue"), Color("LightBlue")]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing))
+            .accentColor(Color.white)
+            .cornerRadius(8.0)
+        }
+    }
+    
     var body: some View {
         VStack {
             Text("Login Account")
@@ -41,13 +55,7 @@ struct ContentView: View {
             }){
                 Text("Login")
             }
-            .frame(minWidth:0, maxWidth: .infinity)
-            .padding(.vertical,12)
-            .background(LinearGradient(gradient: Gradient(colors: [Color("DarkBlue"), Color("LightBlue")]),
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing))
-            .accentColor(Color.white)
-            .cornerRadius(8.0)
+            .modifier(ButtonGradientStyle())
             .padding(.horizontal)
             .padding(.top,32.0)
             
